@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Coastal Medical Rooms — Experienced family doctors providing trusted, personalised healthcare for individuals and families across the Kāpiti Coast since 1999.">
+<title>Coastal Medical Rooms | Kāpiti Coast Family Doctors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;background:#f8f1e6;color:#56524a;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0;color:inherit}
+input,textarea,select{font-family:inherit;font-size:1rem}
+::selection{background:#f1d9c3}
+
+/* ── TOKENS ───────────────────────────────────────────── */
+:root{
+  --navy:#173a57;
+  --navy-dark:#0f2638;
+  --teal:#3f9d94;
+  --terra:#cf7f54;
+  --terra-dark:#b96c43;
+  --sage:#6fa67f;
+  --cream:#f8f1e6;
+  --sand:#f1e7d5;
+  --card:#fffdf8;
+  --border:#ecdfca;
+  --ink:#3a3a33;
+  --muted:#6b665c;
+  --soft:#857f72;
+  --light:#b8c5cb;
+  --shadow-warm:0 24px 50px -24px rgba(40,30,18,.32);
+  --shadow-blue:0 24px 50px -24px rgba(20,40,58,.38);
+  --radius-lg:24px;
+  --radius-md:18px;
+  --radius-sm:13px;
+}
+
+/* ── TYPOGRAPHY ───────────────────────────────────────── */
+.display{font-family:'Plus Jakarta Sans',sans-serif}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;color:var(--navy)}
+h1{font-size:clamp(36px,5.2vw,64px);line-height:1.06;letter-spacing:-1.2px;font-weight:500}
+h2{font-size:clamp(26px,3.2vw,40px);line-height:1.14;letter-spacing:-.9px;font-weight:800}
+h3{font-size:clamp(18px,2vw,22px);line-height:1.3;font-weight:700}
+p{line-height:1.68;color:var(--muted)}
+
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:var(--terra)}
+
+/* ── LAYOUT ───────────────────────────────────────────── */
+.container{max-width:1220px;margin:0 auto;padding:0 24px}
+.section{padding:88px 0}
+.section-sm{padding:56px 0}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.flex{display:flex}
+.flex-col{flex-direction:column}
+.gap-sm{gap:10px}
+.gap-md{gap:16px}
+.gap-lg{gap:24px}
+.wrap{flex-wrap:wrap}
+.center{align-items:center}
+.start{align-items:flex-start}
+.between{justify-content:space-between}
+.text-center{text-align:center}
+
+/* ── BUTTONS ──────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:15px;border-radius:var(--radius-sm);padding:14px 26px;transition:all .2s ease;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--terra);color:#fff;box-shadow:0 14px 28px -12px rgba(207,127,84,.7)}
+.btn-primary:hover{background:var(--terra-dark);transform:translateY(-1px);box-shadow:0 18px 34px -12px rgba(207,127,84,.75)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{background:var(--card);color:var(--navy);border:1.5px solid var(--border)}
+.btn-ghost:hover{background:#f3ead9;border-color:var(--terra)}
+.btn-ghost-dark{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn-ghost-dark:hover{background:rgba(255,255,255,.18)}
+.btn-lg{font-size:16px;padding:16px 32px}
+
+/* ── CARDS ────────────────────────────────────────────── */
+.card{background:var(--card);border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:var(--shadow-warm)}
+.card-lift{transition:transform .25s ease,box-shadow .25s ease}
+.card-lift:hover{transform:translateY(-5px);box-shadow:0 28px 56px -24px rgba(40,30,18,.38)}
+
+/* ── HEADER ───────────────────────────────────────────── */
+#site-header{position:sticky;top:0;z-index:100;background:rgba(248,241,230,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;gap:20px;padding:10px 24px;max-width:1220px;margin:0 auto}
+.logo-btn{display:flex;align-items:center;border:none;background:none;cursor:pointer;padding:0;flex:none}
+.logo-btn img{height:82px;width:auto}
+.desktop-nav{display:flex;align-items:center;gap:28px;margin-left:auto}
+.desktop-nav button{font-size:14.5px;font-weight:500;color:#5b5950;transition:color .15s;border:none;background:none;cursor:pointer;font-family:inherit}
+.desktop-nav button:hover,.desktop-nav button.active{color:var(--navy)}
+.header-actions{display:flex;align-items:center;gap:14px;margin-left:16px}
+.tel-link{display:flex;align-items:center;gap:7px;font-weight:600;font-size:14px;color:var(--navy);white-space:nowrap}
+.tel-link svg{flex:none}
+.burger-btn{display:none;align-items:center;justify-content:center;width:46px;height:46px;border-radius:12px;background:var(--navy);border:none;cursor:pointer;margin-left:auto}
+
+/* ── MOBILE MENU ──────────────────────────────────────── */
+#mobile-menu{display:none;border-top:1px solid var(--border);background:var(--cream)}
+#mobile-menu.open{display:block}
+.mobile-nav-item{display:block;width:100%;text-align:left;padding:14px 24px;font-size:16px;font-weight:600;color:var(--navy);border-bottom:1px solid var(--border);background:none;border-left:none;border-right:none;border-top:none;cursor:pointer;font-family:inherit}
+.mobile-cta{margin:14px 20px 18px;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--navy);color:#fff;font-weight:700;padding:15px;border-radius:13px;font-size:16px}
+
+/* ── PAGES ────────────────────────────────────────────── */
+.page{display:none}
+.page.active{display:block}
+
+/* ── HERO ─────────────────────────────────────────────── */
+#hero{position:relative;min-height:min(88vh,780px);display:flex;align-items:center;overflow:hidden}
+#hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(248,241,230,.96) 0%,rgba(248,241,230,.88) 28%,rgba(248,241,230,.55) 50%,rgba(248,241,230,.14) 66%,rgba(248,241,230,0) 78%)}
+.hero-content{position:relative;max-width:1220px;margin:0 auto;padding:60px 24px;width:100%}
+.hero-text{max-width:520px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:#f3ead9;color:#9a5e30;font-weight:600;font-size:12.5px;letter-spacing:.4px;padding:8px 15px;border-radius:100px;border:1px solid #e9d0b0}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--terra)}
+.hero-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:clamp(38px,5.2vw,64px);line-height:1.06;letter-spacing:-1.2px;color:var(--navy);margin:22px 0 0;text-wrap:balance}
+.hero-title span{color:var(--terra);font-weight:600}
+.hero-sub{font-size:18px;line-height:1.65;color:#4e5f68;margin:20px 0 0}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.hero-checks{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:24px}
+.check-item{display:flex;align-items:center;gap:9px;font-size:13.5px;color:#4e5f68;font-weight:500}
+
+/* ── TRUST BAR ────────────────────────────────────────── */
+#trust-bar{background:var(--navy)}
+.trust-inner{max-width:1220px;margin:0 auto;padding:20px 24px;display:flex;flex-wrap:wrap;gap:12px 34px;justify-content:center;align-items:center}
+.trust-item{display:flex;align-items:center;gap:9px;color:#eef2ee;font-size:14.5px;font-weight:500}
+
+/* ── ABOUT ────────────────────────────────────────────── */
+.about-img-wrap{position:relative}
+.about-img{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:5/4;box-shadow:0 34px 64px -30px rgba(40,30,18,.4)}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.about-badge{position:absolute;right:-16px;bottom:-22px;background:var(--card);border-radius:16px;padding:16px 18px;box-shadow:0 20px 40px -20px rgba(40,30,18,.36);max-width:200px}
+.about-badge-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:var(--navy);font-size:15px}
+.about-badge-sub{font-size:12.5px;color:var(--soft);margin-top:4px;line-height:1.4}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.feature-item{display:flex;gap:12px;align-items:flex-start}
+.feature-icon{flex:none;width:38px;height:38px;border-radius:11px;background:#f3ead9;display:flex;align-items:center;justify-content:center}
+.feature-title{font-weight:700;color:var(--navy);font-size:14.5px;font-family:'Plus Jakarta Sans',sans-serif}
+.feature-sub{font-size:13px;color:var(--soft);margin-top:2px}
+
+/* ── SERVICES ─────────────────────────────────────────── */
+#services-section{background:var(--sand)}
+.svc-card{background:var(--card);border-radius:var(--radius-md);padding:26px;border:1px solid var(--border);transition:transform .25s,box-shadow .25s}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px -22px rgba(40,30,18,.32)}
+.svc-card:hover .svc-icon{background:var(--terra);color:#fff}
+.svc-icon{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:13px;background:#f3ead9;color:var(--navy);transition:.25s;margin-bottom:16px}
+.svc-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17px;color:var(--navy);margin-bottom:8px}
+.svc-desc{font-size:14px;line-height:1.55;color:var(--soft)}
+
+/* ── DOCTOR CARDS ─────────────────────────────────────── */
+.doc-card{background:var(--card);border-radius:20px;overflow:hidden;border:1px solid var(--border);transition:transform .25s,box-shadow .25s}
+.doc-card:hover{transform:translateY(-5px);box-shadow:0 28px 52px -24px rgba(40,30,18,.36)}
+.doc-photo{aspect-ratio:4/3.4;overflow:hidden;background:#eef3ee}
+.doc-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.doc-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#eef3ee,#f3ead9);display:flex;align-items:center;justify-content:center}
+.doc-initials{width:88px;height:88px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:30px;color:var(--terra);box-shadow:0 10px 24px -12px rgba(40,30,18,.3)}
+.doc-body{padding:22px}
+.doc-name{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:19px;color:var(--navy);margin-bottom:3px}
+.doc-role{font-size:13px;color:var(--terra);font-weight:600;margin-bottom:12px}
+.doc-short{font-size:13.5px;line-height:1.55;color:var(--soft);margin-bottom:14px}
+.doc-link{display:flex;align-items:center;gap:7px;color:var(--navy);font-weight:600;font-size:13.5px;background:none;border:none;cursor:pointer;font-family:inherit;padding:0}
+
+/* ── PATIENT SERVICES ─────────────────────────────────── */
+#patient-services{background:var(--navy);position:relative;overflow:hidden}
+.ps-glow-1{position:absolute;top:-100px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(233,176,106,.26),transparent 70%);pointer-events:none}
+.ps-glow-2{position:absolute;bottom:-120px;right:-40px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(111,166,127,.28),transparent 70%);pointer-events:none}
+.ps-card{text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px;cursor:pointer;transition:transform .25s,background .2s;border:1px solid rgba(255,255,255,.13)}
+.ps-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.12)}
+.ps-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.ps-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:#fff;font-size:16.5px;margin-bottom:4px}
+.ps-desc{font-size:13px;color:#c2cdd6}
+
+/* ── LOCATION ─────────────────────────────────────────── */
+.map-wrap{border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(40,30,18,.4);border:1px solid var(--border);aspect-ratio:4/3.2;background:#dce7e3}
+.map-wrap iframe{width:100%;height:100%;border:0;display:block}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--sand);border-radius:100px;padding:8px 15px;font-size:13.5px;font-weight:500;color:#5b5950}
+
+/* ── TESTIMONIALS ─────────────────────────────────────── */
+#testimonials-section{background:var(--sand)}
+.testimonial-card{background:var(--card);border-radius:var(--radius-lg);padding:48px 56px;box-shadow:0 30px 64px -34px rgba(40,30,18,.32);border:1px solid var(--border);position:relative;min-height:200px}
+.stars{display:flex;gap:4px;justify-content:center;margin-bottom:20px}
+.testimonial-quote{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:clamp(19px,2.4vw,25px);line-height:1.5;color:var(--ink);text-wrap:balance}
+.testimonial-name{font-weight:700;color:var(--navy);font-size:15.5px;margin-top:26px}
+.testimonial-meta{font-size:13.5px;color:#9a9384;margin-top:2px}
+.ti-btn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer}
+.ti-btn:hover{background:var(--border)}
+.ti-dots{display:flex;gap:8px;justify-content:center;margin-top:24px}
+.ti-dot{height:9px;border-radius:100px;border:none;cursor:pointer;transition:all .25s}
+.ti-note{font-size:12.5px;color:#a59d8c;margin-top:18px;font-style:italic}
+
+/* ── FINAL CTA ────────────────────────────────────────── */
+.cta-band{position:relative;overflow:hidden;border-radius:30px;background:linear-gradient(120deg,var(--navy) 0%,#236070 52%,#cf7f54 130%);padding:64px 48px;text-align:center}
+.cta-glow{position:absolute;top:-80px;right:-40px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(240,192,137,.35),transparent 70%);pointer-events:none}
+
+/* ── DOCTORS PAGE ─────────────────────────────────────── */
+.page-hero{background:linear-gradient(180deg,var(--sand),var(--cream));padding:64px 24px 40px;text-align:center}
+.page-hero p{max-width:600px;margin:18px auto 0;font-size:17.5px;line-height:1.6}
+.doc-row{display:grid;grid-template-columns:280px 1fr;gap:34px;align-items:center}
+.doc-row-img{border-radius:var(--radius-md);overflow:hidden;aspect-ratio:4/4.4;background:#eef3ee}
+.doc-row-img img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.doc-row-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#eef3ee,#f3ead9);display:flex;align-items:center;justify-content:center}
+.doc-row-initials{width:104px;height:104px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:36px;color:var(--terra);box-shadow:0 10px 24px -12px rgba(40,30,18,.3)}
+.tag{background:#f3ead9;color:#b5663b;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:100px}
+
+/* ── CONTACT PAGE ─────────────────────────────────────── */
+.contact-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:start}
+.form-card{background:var(--card);border-radius:var(--radius-lg);padding:36px;border:1px solid var(--border);box-shadow:var(--shadow-warm)}
+label{display:flex;flex-direction:column;gap:7px}
+.label-text{font-size:13px;font-weight:600;color:#5b5950}
+input,textarea,select{background:#faf5ec;border:1.5px solid #e7dac4;border-radius:11px;padding:13px 14px;color:var(--ink);outline:none;width:100%;transition:border-color .2s}
+input:focus,textarea:focus,select:focus{border-color:var(--terra)}
+textarea{resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.contact-detail{background:var(--card);border-radius:var(--radius-md);padding:22px 24px;border:1px solid var(--border);display:flex;gap:16px;align-items:flex-start}
+.contact-icon{flex:none;width:44px;height:44px;border-radius:12px;background:#f3ead9;display:flex;align-items:center;justify-content:center}
+.contact-label{font-size:12.5px;font-weight:600;color:var(--soft);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+.emergency-card{background:#fbe7d8;border:1px solid #f0cda6;border-radius:var(--radius-md);padding:20px 22px;display:flex;gap:14px;align-items:flex-start}
+.emergency-icon{flex:none;width:40px;height:40px;border-radius:11px;background:var(--terra);display:flex;align-items:center;justify-content:center}
+.success-box{text-align:center;padding:30px 10px}
+.success-icon{display:inline-flex;width:64px;height:64px;border-radius:50%;background:#eaf4ee;align-items:center;justify-content:center;margin-bottom:18px}
+
+/* ── FOOTER ───────────────────────────────────────────── */
+#site-footer{background:#142f47;color:#c2cdd6}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:60px 24px 30px;max-width:1220px;margin:0 auto}
+.footer-logo-wrap{background:#fff;border-radius:14px;padding:10px 12px;width:fit-content;margin-bottom:18px}
+.footer-logo-wrap img{height:46px;width:auto}
+.footer-text{font-size:14px;line-height:1.65;color:#9fb0bd;max-width:300px}
+.footer-heading{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:#fff;font-size:14px;margin-bottom:14px}
+.footer-links{display:flex;flex-direction:column;gap:11px}
+.footer-links button{text-align:left;font-size:14px;color:#9fb0bd;background:none;border:none;cursor:pointer;font-family:inherit}
+.footer-links button:hover{color:#fff}
+.footer-address{font-size:14px;line-height:1.7;color:#9fb0bd}
+.footer-tel{color:#f0c089;font-weight:600}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1)}
+.footer-bottom-inner{max-width:1220px;margin:0 auto;padding:18px 24px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:12.5px;color:#7d8e9b}
+
+/* ── FAB ──────────────────────────────────────────────── */
+#fab{display:none;position:fixed;right:18px;bottom:18px;z-index:200;width:60px;height:60px;border-radius:50%;background:var(--terra);align-items:center;justify-content:center;box-shadow:0 14px 30px -8px rgba(207,127,84,.8);text-decoration:none}
+
+/* ── ANIMATIONS ───────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ───────────────────────────────────────── */
+@media(max-width:960px){
+  .grid-2,.doc-row,.contact-grid{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr 1fr}
+  .doc-row{gap:20px}
+  .doc-row-img{max-width:360px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .about-badge{display:none}
+}
+@media(max-width:768px){
+  .desktop-nav,.header-actions{display:none}
+  .burger-btn{display:flex}
+  #fab{display:flex}
+  .section{padding:60px 0}
+  .hero-overlay{background:linear-gradient(150deg,rgba(248,241,230,.98) 0%,rgba(248,241,230,.92) 35%,rgba(248,241,230,.6) 58%,rgba(248,241,230,.1) 78%,rgba(248,241,230,0) 90%)}
+  .hero-text{max-width:100%}
+  #hero{min-height:auto;padding-bottom:0}
+  .hero-content{padding:40px 20px 48px}
+  h1{font-size:clamp(32px,8vw,48px)}
+  h2{font-size:clamp(24px,6vw,34px)}
+  .testimonial-card{padding:36px 26px;padding-left:52px;padding-right:52px}
+  .cta-band{padding:40px 24px;border-radius:20px}
+  .feature-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:1fr}
+  .trust-inner{gap:12px 20px}
+}
+@media(max-width:480px){
+  .hero-btns{flex-direction:column}
+  .hero-btns .btn{width:100%;justify-content:center}
+  .ti-btn{display:none}
+  .testimonial-card{padding:30px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ─────────────────────────────────────────── -->
+<header id="site-header">
+  <div class="header-inner">
+    <button class="logo-btn" onclick="showPage('home')" aria-label="Home">
+      <img src="assets/logo.png" alt="Coastal Medical Rooms">
+    </button>
+    <nav class="desktop-nav">
+      <button onclick="showPage('home')" id="nav-home" class="active">Home</button>
+      <button onclick="scrollToSection('about')">About</button>
+      <button onclick="scrollToSection('services-section')">Services</button>
+      <button onclick="showPage('doctors')" id="nav-doctors">Our Doctors</button>
+      <button onclick="showPage('contact')" id="nav-contact">Contact</button>
+    </nav>
+    <div class="header-actions">
+      <a href="tel:049029200" class="tel-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.3c.8 1.8 2.2 3.2 4 4l1.3-2 4 1.5v3c0 .8-.7 1.5-1.5 1.4C13 19.9 4.1 11 4.1 5.5 4 4.7 4.7 4 5.5 4h1z" stroke="#cf7f54" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        04 902 9200
+      </a>
+      <button class="btn btn-primary" onclick="showPage('contact')">Book Appointment</button>
+    </div>
+    <button class="burger-btn" onclick="toggleMenu()" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu">
+    <button class="mobile-nav-item" onclick="showPage('home')">Home</button>
+    <button class="mobile-nav-item" onclick="scrollToSection('about')">About</button>
+    <button class="mobile-nav-item" onclick="scrollToSection('services-section')">Services</button>
+    <button class="mobile-nav-item" onclick="showPage('doctors')">Our Doctors</button>
+    <button class="mobile-nav-item" onclick="showPage('contact')">Contact</button>
+    <a href="tel:049029200" class="mobile-cta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.3c.8 1.8 2.2 3.2 4 4l1.3-2 4 1.5v3c0 .8-.7 1.5-1.5 1.4C13 19.9 4.1 11 4.1 5.5 4 4.7 4.7 4 5.5 4h1z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      Call 04 902 9200
+    </a>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section id="hero">
+    <img class="hero-bg" src="assets/hero2.png" alt="A doctor smiling with a young patient">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>Family Medical Practice · Paraparaumu
+        </div>
+        <h1 class="hero-title">Caring for the<br>Kāpiti Coast<br><span>since 1999</span></h1>
+        <p class="hero-sub">Experienced family doctors providing trusted, personalised healthcare for individuals and families across every stage of life.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary btn-lg" onclick="showPage('contact')">Book Appointment</button>
+          <a href="tel:049029200" class="btn btn-ghost btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.3c.8 1.8 2.2 3.2 4 4l1.3-2 4 1.5v3c0 .8-.7 1.5-1.5 1.4C13 19.9 4.1 11 4.1 5.5 4 4.7 4.7 4 5.5 4h1z" stroke="#cf7f54" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            04 902 9200
+          </a>
+        </div>
+        <div class="hero-checks">
+          <div class="check-item">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6fa67f" stroke-width="1.8"/><path d="M8 12.2l2.6 2.6L16 9" stroke="#6fa67f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Enrolling new patients
+          </div>
+          <div class="check-item">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6fa67f" stroke-width="1.8"/><path d="M8 12.2l2.6 2.6L16 9" stroke="#6fa67f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Same-day acute care
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section id="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#e9b06a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Established 1999</div>
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#e9b06a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Experienced GP Team</div>
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#e9b06a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Same-Day Acute Care</div>
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#e9b06a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Repeat Prescriptions</div>
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#e9b06a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Online Patient Portal</div>
+      <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#e9b06a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Health Improvement Practitioner</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div class="about-img-wrap">
+          <div class="about-img">
+            <img src="assets/clinic.png" alt="Coastal Medical Rooms clinic exterior">
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-title">Continuity of care</div>
+            <div class="about-badge-sub">Seeing the doctor who knows your story</div>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">Our Practice</p>
+          <h2 style="margin:14px 0 0">Local healthcare with long-term relationships</h2>
+          <p style="margin-top:20px;font-size:16.5px">Coastal Medical Rooms has been part of the Kāpiti community for more than two decades. Our long-standing team of doctors and nurses provides family-centred care built on trust, familiarity and genuine relationships.</p>
+          <p style="margin-top:16px;font-size:16.5px">We pair the warmth of a local practice with modern healthcare tools — an online patient portal, same-day acute appointments, and a dedicated Health Improvement Practitioner — so looking after your health feels simple and personal.</p>
+          <div class="feature-grid">
+            <div class="feature-item">
+              <div class="feature-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="#cf7f54" stroke-width="1.7"/><circle cx="12" cy="11" r="2.4" stroke="#cf7f54" stroke-width="1.7"/></svg></div>
+              <div><div class="feature-title">Community rooted</div><div class="feature-sub">Serving Kāpiti since 1999</div></div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M16 19a4 4 0 00-8 0M12 11a3.2 3.2 0 100-6.4A3.2 3.2 0 0012 11z" stroke="#cf7f54" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+              <div><div class="feature-title">Experienced GPs</div><div class="feature-sub">A stable, familiar team</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services-section" class="section">
+    <div class="container">
+      <div class="text-center fade-in" style="max-width:640px;margin:0 auto">
+        <p class="eyebrow">What We Offer</p>
+        <h2 style="margin:14px 0 0">Comprehensive care, close to home</h2>
+        <p style="margin:16px auto 0;font-size:16.5px">From everyday family medicine to specialised clinics, our team supports your health at every stage of life.</p>
+      </div>
+      <div class="grid-auto" style="margin-top:48px">
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 4h6v5h5v6h-5v5H9v-5H4V9h5V4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <div class="svc-title">General Practice</div>
+          <div class="svc-desc">Everyday family medicine, check-ups and ongoing care.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/><path d="M15.8 15.8L20 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="svc-title">Skin Checks &amp; Minor Surgery</div>
+          <div class="svc-desc">Skin cancer checks, mole mapping and minor procedures.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.5-4.3-6.5-9.3A6.5 6.5 0 0112 5.2a6.5 6.5 0 016.5 6.5C18.5 16.7 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <div class="svc-title">Women's Health</div>
+          <div class="svc-desc">Cervical screening, contraception and wellbeing care.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4l4 1.5v6c0 3.5-2.2 6-4 7-1.8-1-4-3.5-4-7V5.5L12 4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <div class="svc-title">Immunisations</div>
+          <div class="svc-desc">Childhood, adult and travel vaccinations.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 20s-6.5-4-6.5-9A4.2 4.2 0 0112 8a4.2 4.2 0 016.5 3c0 5-6.5 9-6.5 9z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+          <div class="svc-title">Sexual Health</div>
+          <div class="svc-desc">Confidential testing, advice and contraception.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.7"/><path d="M6 20c0-3.3 2.7-5.5 6-5.5S18 16.7 18 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="svc-title">Childhood Health</div>
+          <div class="svc-desc">Well-child checks, development and family support.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 4h6l3 3v13H8zM10 11h5M10 14.5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="svc-title">Repeat Prescriptions</div>
+          <div class="svc-desc">Request repeats quickly through the patient portal.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 13c3-1 5-3 5-6m11 6c-3-1-5-3-5-6M4 13c3 1 5 3 5 6m11-6c-3 1-5 3-5 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="svc-title">Health Coaching</div>
+          <div class="svc-desc">Support to build lasting, healthy lifestyle habits.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4a4 4 0 014 4c0 2-1.5 3-1.5 5h-5C9.5 11 8 10 8 8a4 4 0 014-4zM9.5 17h5M10.5 20h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="svc-title">Health Improvement Practitioner</div>
+          <div class="svc-desc">Free, same-day support for wellbeing and stress.</div>
+        </div>
+        <div class="svc-card card-lift fade-in">
+          <div class="svc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 4h8v4H8zM6 8h12v12H6zM12 11v5M9.5 13.5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+          <div class="svc-title">Medical Examinations</div>
+          <div class="svc-desc">Insurance, employment, driver and visa medicals.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCTORS PREVIEW -->
+  <section class="section" style="background:var(--cream)">
+    <div class="container">
+      <div class="flex wrap between center fade-in" style="gap:18px;margin-bottom:42px">
+        <div style="max-width:560px">
+          <p class="eyebrow">Meet the Team</p>
+          <h2 style="margin:14px 0 0">Experienced doctors who know you</h2>
+        </div>
+        <button class="btn btn-ghost" onclick="showPage('doctors')">View all profiles</button>
+      </div>
+      <div class="grid-auto">
+        <div class="doc-card card-lift fade-in">
+          <div class="doc-photo"><img src="assets/dr-paul-davis.jpg" alt="Dr Paul Davis"></div>
+          <div class="doc-body">
+            <div class="doc-name">Dr Paul Davis</div>
+            <div class="doc-role">General Practitioner</div>
+            <div class="doc-short">Interests in minor surgery, skin health and men's wellbeing, with a calm, practical approach.</div>
+            <button class="doc-link" onclick="showPage('doctors')">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#cf7f54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="doc-card card-lift fade-in">
+          <div class="doc-photo"><img src="assets/dr-rachel-watters.jpg" alt="Dr Rachel Watters"></div>
+          <div class="doc-body">
+            <div class="doc-name">Dr Rachel Watters</div>
+            <div class="doc-role">General Practitioner</div>
+            <div class="doc-short">Special interests in women's health, sexual health and whole-family medicine.</div>
+            <button class="doc-link" onclick="showPage('doctors')">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#cf7f54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="doc-card card-lift fade-in">
+          <div class="doc-photo"><img src="assets/dr-jan-lavery.jpg" alt="Dr Jan Lavery"></div>
+          <div class="doc-body">
+            <div class="doc-name">Dr Jan Lavery</div>
+            <div class="doc-role">General Practitioner</div>
+            <div class="doc-short">Focused on child health, immunisations and preventive, family-centred care.</div>
+            <button class="doc-link" onclick="showPage('doctors')">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#cf7f54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="doc-card card-lift fade-in">
+          <div class="doc-photo" style="background:linear-gradient(135deg,#eef3ee,#f3ead9);display:flex;align-items:center;justify-content:center"><div class="doc-initials">AZ</div></div>
+          <div class="doc-body">
+            <div class="doc-name">Dr Alice Zwart</div>
+            <div class="doc-role">General Practitioner</div>
+            <div class="doc-short">Interests in chronic condition management, diabetes care and mental health.</div>
+            <button class="doc-link" onclick="showPage('doctors')">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#cf7f54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="doc-card card-lift fade-in">
+          <div class="doc-photo" style="background:linear-gradient(135deg,#eef3ee,#f3ead9);display:flex;align-items:center;justify-content:center"><div class="doc-initials">JH</div></div>
+          <div class="doc-body">
+            <div class="doc-name">Dr Julia Hook</div>
+            <div class="doc-role">General Practitioner</div>
+            <div class="doc-short">Interests in women's and children's health, and minor surgical procedures.</div>
+            <button class="doc-link" onclick="showPage('doctors')">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#cf7f54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="doc-card card-lift fade-in">
+          <div class="doc-photo" style="background:linear-gradient(135deg,#eef3ee,#f3ead9);display:flex;align-items:center;justify-content:center"><div class="doc-initials">MC</div></div>
+          <div class="doc-body">
+            <div class="doc-name">Dr Matthew Claridge</div>
+            <div class="doc-role">General Practitioner</div>
+            <div class="doc-short">Interests in acute care, sports medicine and men's health.</div>
+            <button class="doc-link" onclick="showPage('doctors')">View profile <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#cf7f54" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATIENT SERVICES -->
+  <section id="patient-services" class="section">
+    <div class="ps-glow-1"></div>
+    <div class="ps-glow-2"></div>
+    <div class="container" style="position:relative">
+      <div class="text-center fade-in" style="max-width:600px;margin:0 auto">
+        <p class="eyebrow" style="color:#f0c089">Quick Access</p>
+        <h2 style="color:#fff;margin:14px 0 0">Everything you need, in one place</h2>
+      </div>
+      <div class="grid-auto" style="margin-top:44px">
+        <button class="ps-card" onclick="showPage('contact')"><div class="ps-icon" style="background:#cf7f54"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="2.5" stroke="#fff" stroke-width="1.7"/><path d="M4 9h16M8 3v3M16 3v3M9 14l2 2 4-4" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="ps-title">Book Appointment</div><div class="ps-desc">Request a time with your GP</div></div></button>
+        <button class="ps-card" onclick="showPage('contact')"><div class="ps-icon" style="background:#6fa67f"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M8 4h6l3 3v13H7V4z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 12h4M12 10v4" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div><div><div class="ps-title">Repeat Prescription</div><div class="ps-desc">Order your regular medication</div></div></button>
+        <button class="ps-card" onclick="showPage('contact')"><div class="ps-icon" style="background:#3f9d94"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.5" stroke="#fff" stroke-width="1.7"/><path d="M10 18h4" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div><div><div class="ps-title">Patient Portal · myIndici</div><div class="ps-desc">View results &amp; secure messages</div></div></button>
+        <button class="ps-card" onclick="showPage('contact')"><div class="ps-icon" style="background:#6fa67f"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#fff" stroke-width="1.7"/><path d="M12 7.5V12l3 2" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="ps-title">After Hours Care</div><div class="ps-desc">What to do when we're closed</div></div></button>
+        <button class="ps-card" onclick="showPage('contact')"><div class="ps-icon" style="background:#cf7f54"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M8 8h6.5a2.5 2.5 0 010 5H9.5a2.5 2.5 0 000 5H16" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="ps-title">Fees &amp; Charges</div><div class="ps-desc">Our enrolment &amp; visit fees</div></div></button>
+        <button class="ps-card" onclick="showPage('contact')"><div class="ps-icon" style="background:#3f9d94"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.3c.8 1.8 2.2 3.2 4 4l1.3-2 4 1.5v3c0 .8-.7 1.5-1.5 1.4C13 19.9 4.1 11 4.1 5.5 4 4.7 4.7 4 5.5 4h1z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div><div class="ps-title">Contact Practice</div><div class="ps-desc">Phone, email and location</div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="section">
+    <div class="container">
+      <div class="grid-2 fade-in">
+        <div>
+          <p class="eyebrow">Find Us</p>
+          <h2 style="margin:14px 0 0">Easy to reach, easy to park</h2>
+          <div class="flex start" style="gap:14px;margin-top:26px">
+            <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="#cf7f54" stroke-width="1.7"/><circle cx="12" cy="11" r="2.4" stroke="#cf7f54" stroke-width="1.7"/></svg></div>
+            <div>
+              <div style="font-weight:700;color:var(--navy);font-size:16px;font-family:'Plus Jakarta Sans',sans-serif">240 Mazengarb Road</div>
+              <div style="font-size:14.5px;color:var(--soft);margin-top:2px">Paraparaumu, Kāpiti Coast 5032</div>
+            </div>
+          </div>
+          <a href="tel:049029200" class="btn btn-primary btn-lg" style="margin-top:22px;display:inline-flex;gap:12px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.3c.8 1.8 2.2 3.2 4 4l1.3-2 4 1.5v3c0 .8-.7 1.5-1.5 1.4C13 19.9 4.1 11 4.1 5.5 4 4.7 4.7 4 5.5 4h1z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            <span style="display:flex;flex-direction:column;line-height:1.15;text-align:left"><span style="font-size:12px;opacity:.85">Call the practice</span><span style="font-weight:700;font-size:19px">04 902 9200</span></span>
+          </a>
+          <div class="flex wrap" style="gap:10px;margin-top:24px">
+            <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#6fa67f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Free on-site parking</span>
+            <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#6fa67f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Wheelchair accessible</span>
+            <span class="chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#6fa67f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Mon–Fri 8:00am–5:30pm</span>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe title="Map — Coastal Medical Rooms" src="https://www.openstreetmap.org/export/embed.html?bbox=174.985%2C-40.905%2C175.025%2C-40.885&layer=mapnik&marker=-40.895%2C175.005" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials-section" class="section">
+    <div class="container">
+      <div class="text-center fade-in" style="max-width:980px;margin:0 auto">
+        <p class="eyebrow">Patient Stories</p>
+        <h2 style="margin:14px 0 36px">What our community says</h2>
+        <div class="testimonial-card">
+          <div class="stars">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#e9b06a"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#e9b06a"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#e9b06a"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#e9b06a"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#e9b06a"><path d="M12 2l2.9 6.3 6.8.7-5 4.6 1.4 6.7L12 17.8 5.9 20.3 7.3 13.6l-5-4.6 6.8-.7z"/></svg>
+          </div>
+          <p class="testimonial-quote" id="ti-quote">"The doctors here genuinely know our whole family. We never feel rushed, and the care is always thoughtful and kind."</p>
+          <div class="testimonial-name" id="ti-name">Placeholder patient</div>
+          <div class="testimonial-meta" id="ti-meta">Paraparaumu</div>
+          <button class="ti-btn" style="left:14px" onclick="prevTi()" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="#173a57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="ti-btn" style="right:14px" onclick="nextTi()" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#173a57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="ti-dots" id="ti-dots"></div>
+        <p class="ti-note">Placeholder testimonials shown for layout — share real patient reviews to display here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-band fade-in">
+        <div class="cta-glow"></div>
+        <div style="position:relative">
+          <h2 style="color:#fff;margin:0;text-wrap:balance">Looking for a trusted family doctor?</h2>
+          <p style="font-size:17.5px;color:#eadfd0;margin:18px auto 0;max-width:520px">Call us today or get in touch with our friendly team — we'd love to welcome you and your family to the practice.</p>
+          <div class="flex wrap" style="gap:14px;justify-content:center;margin-top:32px">
+            <button class="btn btn-lg" style="background:#fff;color:var(--navy);font-weight:700;box-shadow:0 18px 36px -16px rgba(0,0,0,.4)" onclick="showPage('contact')">Book Appointment</button>
+            <a href="tel:049029200" class="btn btn-ghost-dark btn-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.3c.8 1.8 2.2 3.2 4 4l1.3-2 4 1.5v3c0 .8-.7 1.5-1.5 1.4C13 19.9 4.1 11 4.1 5.5 4 4.7 4.7 4 5.5 4h1z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              04 902 9200
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     DOCTORS PAGE
+══════════════════════════════════════════════════════ -->
+<div id="page-doctors" class="page">
+  <div class="page-hero">
+    <p class="eyebrow">Our Doctors</p>
+    <h1 style="font-weight:800;letter-spacing:-1.3px;margin-top:14px">Experienced GPs, dedicated to Kāpiti</h1>
+    <p>Our team has cared for local families for many years. Get to know the doctors who'll know you and your story.</p>
+  </div>
+  <section class="section">
+    <div class="container" style="display:flex;flex-direction:column;gap:26px">
+
+      <div class="card" style="padding:26px">
+        <div class="doc-row">
+          <div class="doc-row-img"><img src="assets/dr-paul-davis.jpg" alt="Dr Paul Davis"></div>
+          <div>
+            <h2 style="font-size:27px;letter-spacing:-.5px;margin-bottom:4px">Dr Paul Davis</h2>
+            <div style="font-size:14px;color:var(--terra);font-weight:600;margin-bottom:16px">General Practitioner · MBChB, FRNZCGP</div>
+            <p style="font-size:15px">Paul brings a calm, practical approach to family medicine, with a particular focus on minor surgery, skin health and men's wellbeing. He values long-term relationships and helping patients feel genuinely heard.</p>
+            <div style="font-weight:700;color:var(--navy);font-size:13px;margin-top:18px;font-family:'Plus Jakarta Sans',sans-serif">Special interests</div>
+            <div class="flex wrap" style="gap:8px;margin-top:10px">
+              <span class="tag">Minor surgery</span><span class="tag">Skin health</span><span class="tag">Men's health</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:26px">
+        <div class="doc-row">
+          <div class="doc-row-img"><img src="assets/dr-rachel-watters.jpg" alt="Dr Rachel Watters"></div>
+          <div>
+            <h2 style="font-size:27px;letter-spacing:-.5px;margin-bottom:4px">Dr Rachel Watters</h2>
+            <div style="font-size:14px;color:var(--terra);font-weight:600;margin-bottom:16px">General Practitioner · MBChB</div>
+            <p style="font-size:15px">Rachel has a warm, attentive style and special interests in women's health, sexual health and whole-family medicine. She enjoys supporting patients through every stage of life.</p>
+            <div style="font-weight:700;color:var(--navy);font-size:13px;margin-top:18px;font-family:'Plus Jakarta Sans',sans-serif">Special interests</div>
+            <div class="flex wrap" style="gap:8px;margin-top:10px">
+              <span class="tag">Women's health</span><span class="tag">Sexual health</span><span class="tag">Family medicine</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:26px">
+        <div class="doc-row">
+          <div class="doc-row-img"><img src="assets/dr-jan-lavery.jpg" alt="Dr Jan Lavery"></div>
+          <div>
+            <h2 style="font-size:27px;letter-spacing:-.5px;margin-bottom:4px">Dr Jan Lavery</h2>
+            <div style="font-size:14px;color:var(--terra);font-weight:600;margin-bottom:16px">General Practitioner · MBChB</div>
+            <p style="font-size:15px">Jan is focused on child health, immunisations and preventive, family-centred care. She takes time to understand each family and build trusted, lasting relationships.</p>
+            <div style="font-weight:700;color:var(--navy);font-size:13px;margin-top:18px;font-family:'Plus Jakarta Sans',sans-serif">Special interests</div>
+            <div class="flex wrap" style="gap:8px;margin-top:10px">
+              <span class="tag">Child health</span><span class="tag">Immunisations</span><span class="tag">Preventive care</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:26px">
+        <div class="doc-row">
+          <div class="doc-row-img doc-row-placeholder"><div class="doc-row-initials">AZ</div></div>
+          <div>
+            <h2 style="font-size:27px;letter-spacing:-.5px;margin-bottom:4px">Dr Alice Zwart</h2>
+            <div style="font-size:14px;color:var(--terra);font-weight:600;margin-bottom:16px">General Practitioner · MBChB</div>
+            <p style="font-size:15px">Alice has interests in chronic condition management, diabetes care and mental health. She is known for her thoughtful, patient-centred manner and clear explanations.</p>
+            <div style="font-weight:700;color:var(--navy);font-size:13px;margin-top:18px;font-family:'Plus Jakarta Sans',sans-serif">Special interests</div>
+            <div class="flex wrap" style="gap:8px;margin-top:10px">
+              <span class="tag">Chronic conditions</span><span class="tag">Diabetes</span><span class="tag">Mental health</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:26px">
+        <div class="doc-row">
+          <div class="doc-row-img doc-row-placeholder"><div class="doc-row-initials">JH</div></div>
+          <div>
+            <h2 style="font-size:27px;letter-spacing:-.5px;margin-bottom:4px">Dr Julia Hook</h2>
+            <div style="font-size:14px;color:var(--terra);font-weight:600;margin-bottom:16px">General Practitioner · MBChB</div>
+            <p style="font-size:15px">Julia enjoys the full breadth of general practice, with particular interests in women's and children's health and minor surgical procedures. She is warm, approachable and family-focused.</p>
+            <div style="font-weight:700;color:var(--navy);font-size:13px;margin-top:18px;font-family:'Plus Jakarta Sans',sans-serif">Special interests</div>
+            <div class="flex wrap" style="gap:8px;margin-top:10px">
+              <span class="tag">Women's health</span><span class="tag">Child health</span><span class="tag">Minor surgery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:26px">
+        <div class="doc-row">
+          <div class="doc-row-img doc-row-placeholder"><div class="doc-row-initials">MC</div></div>
+          <div>
+            <h2 style="font-size:27px;letter-spacing:-.5px;margin-bottom:4px">Dr Matthew Claridge</h2>
+            <div style="font-size:14px;color:var(--terra);font-weight:600;margin-bottom:16px">General Practitioner · MBChB</div>
+            <p style="font-size:15px">Matthew has interests in acute care, sports medicine and men's health. He brings energy and a problem-solving approach to everyday general practice.</p>
+            <div style="font-weight:700;color:var(--navy);font-size:13px;margin-top:18px;font-family:'Plus Jakarta Sans',sans-serif">Special interests</div>
+            <div class="flex wrap" style="gap:8px;margin-top:10px">
+              <span class="tag">Acute care</span><span class="tag">Sports medicine</span><span class="tag">Men's health</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--navy);border-radius:var(--radius-lg);padding:40px;text-align:center;margin-top:8px">
+        <h3 style="color:#fff;font-size:24px;margin-bottom:12px">Ready to meet your new GP?</h3>
+        <p style="color:#c2cdd6;max-width:440px;margin:0 auto 24px">Get in touch and our friendly reception team will help you enrol and book your first appointment.</p>
+        <button class="btn btn-primary btn-lg" onclick="showPage('contact')">Contact the practice</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     CONTACT PAGE
+══════════════════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <p class="eyebrow">Get in Touch</p>
+    <h1 style="font-weight:800;letter-spacing:-1.3px;margin-top:14px">We're here to help</h1>
+    <p>Send us a message to request an appointment, a repeat prescription, or ask a question.</p>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="form-card">
+          <div id="form-open">
+            <h2 style="font-size:23px;margin-bottom:4px">Send us a message</h2>
+            <p style="font-size:14px;color:var(--soft);margin-bottom:24px">Fields marked * are required.</p>
+            <div class="form-row" style="margin-bottom:16px">
+              <label><span class="label-text">Full name *</span><input type="text" placeholder="Your name" id="f-name"></label>
+              <label><span class="label-text">Phone</span><input type="tel" placeholder="Best contact number" id="f-phone"></label>
+            </div>
+            <label style="margin-bottom:16px"><span class="label-text">Email *</span><input type="email" placeholder="you@email.com" id="f-email"></label>
+            <label style="margin-bottom:16px"><span class="label-text">Reason for contact</span>
+              <select id="f-reason">
+                <option>Book an appointment</option>
+                <option>Repeat prescription</option>
+                <option>Enrol as a new patient</option>
+                <option>General enquiry</option>
+              </select>
+            </label>
+            <label style="margin-bottom:22px"><span class="label-text">Message *</span><textarea rows="5" placeholder="How can we help?" id="f-msg"></textarea></label>
+            <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center" onclick="submitForm()">Send message</button>
+            <p style="font-size:12px;color:#a59d8c;margin-top:14px;text-align:center;line-height:1.5">For emergencies call 111. Please don't include sensitive medical details.</p>
+          </div>
+          <div id="form-success" style="display:none">
+            <div class="success-box">
+              <div class="success-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7" stroke="#6fa67f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <h3 style="margin-bottom:12px">Thank you — message received</h3>
+              <p style="font-size:15px;max-width:360px;margin:0 auto 22px">Our reception team will be in touch during practice hours. For anything urgent, please call us.</p>
+              <button onclick="resetForm()" style="color:var(--terra);font-weight:700;font-size:14.5px;background:none;border:none;cursor:pointer;font-family:inherit">Send another message</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="contact-detail">
+            <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.3c.8 1.8 2.2 3.2 4 4l1.3-2 4 1.5v3c0 .8-.7 1.5-1.5 1.4C13 19.9 4.1 11 4.1 5.5 4 4.7 4.7 4 5.5 4h1z" stroke="#cf7f54" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+            <div><div class="contact-label">Phone</div><a href="tel:049029200" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:19px;color:var(--navy)">04 902 9200</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5" stroke="#cf7f54" stroke-width="1.7"/><path d="M4.5 7l7.5 5 7.5-5" stroke="#cf7f54" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><div class="contact-label">Email</div><a href="mailto:reception@coastalmedical.co.nz" style="font-weight:700;font-size:15px;color:var(--navy);word-break:break-all">reception@coastalmedical.co.nz</a></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="#cf7f54" stroke-width="1.7"/><circle cx="12" cy="11" r="2.4" stroke="#cf7f54" stroke-width="1.7"/></svg></div>
+            <div><div class="contact-label">Address</div><div style="font-weight:700;font-size:15.5px;color:var(--navy)">240 Mazengarb Road</div><div style="font-size:14px;color:var(--soft)">Paraparaumu, Kāpiti Coast 5032</div></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#cf7f54" stroke-width="1.7"/><path d="M12 7.5V12l3 2" stroke="#cf7f54" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><div class="contact-label">Hours</div><div style="font-weight:700;font-size:15.5px;color:var(--navy)">Mon–Fri · 8:00am – 5:30pm</div><div style="font-size:14px;color:var(--soft)">Closed weekends &amp; public holidays</div></div>
+          </div>
+          <div class="emergency-card">
+            <div class="emergency-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 16H3L12 3z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4M12 16.5v.2" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></div>
+            <div><div style="font-weight:700;color:#9a4f24;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;margin-bottom:4px">In an emergency</div><div style="font-size:13.5px;color:#9a6b4a;line-height:1.5">If it's a medical emergency, call <strong>111</strong> immediately. When we're closed, contact Practice Plus for after-hours advice.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── FOOTER ──────────────────────────────────────────── -->
+<footer id="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo-wrap"><img src="assets/logo.png" alt="Coastal Medical Rooms"></div>
+      <p class="footer-text">Trusted family healthcare for the Kāpiti Coast since 1999. Continuity of care, close to home.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Explore</div>
+      <div class="footer-links">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="scrollToSection('about')">About</button>
+        <button onclick="scrollToSection('services-section')">Services</button>
+        <button onclick="showPage('doctors')">Our Doctors</button>
+        <button onclick="showPage('contact')">Contact</button>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Visit us</div>
+      <p class="footer-address">240 Mazengarb Road<br>Paraparaumu, Kāpiti Coast<br><a href="tel:049029200" class="footer-tel">04 902 9200</a><br>Mon–Fri · 8:00am–5:30pm</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span>© 2026 Coastal Medical Rooms. All rights reserved.</span>
+      <span>In an emergency, call 111</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE FAB -->
+<a id="fab" href="tel:049029200" aria-label="Call Coastal Medical Rooms">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6.5 4h3l1.5 4-2 1.3c.8 1.8 2.2 3.2 4 4l1.3-2 4 1.5v3c0 .8-.7 1.5-1.5 1.4C13 19.9 4.1 11 4.1 5.5 4 4.7 4.7 4 5.5 4h1z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+</a>
+
+<!-- ── BUNDLER THUMBNAIL ──────────────────────────────── -->
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 112">
+  <rect width="160" height="112" fill="#173a57"/>
+  <rect x="20" y="20" width="120" height="72" rx="8" fill="#f8f1e6" opacity=".12"/>
+  <text x="80" y="52" font-family="sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">COASTAL</text>
+  <text x="80" y="68" font-family="sans-serif" font-size="8" fill="#cf7f54" text-anchor="middle" letter-spacing="2">MEDICAL ROOMS</text>
+</svg>
+</template>
+
+<script>
+// ── TESTIMONIALS ───────────────────────────────────────
+const testimonials = [
+  {quote:'The doctors here genuinely know our whole family. We never feel rushed, and the care is always thoughtful and kind.', name:'Placeholder patient', meta:'Paraparaumu'},
+  {quote:'Booking was easy and I was seen the same day. The team is friendly, professional and clearly cares about the community.', name:'Placeholder patient', meta:'Raumati'},
+  {quote:'After years with the same GP, it feels like having a trusted friend looking after your health. Highly recommend.', name:'Placeholder patient', meta:'Waikanae'},
+];
+let tiIndex = 0;
+
+function renderTi(){
+  const t = testimonials[tiIndex];
+  document.getElementById('ti-quote').textContent = '\u201c' + t.quote + '\u201d';
+  document.getElementById('ti-name').textContent = t.name;
+  document.getElementById('ti-meta').textContent = t.meta;
+  const dots = document.getElementById('ti-dots');
+  dots.innerHTML = '';
+  testimonials.forEach((_,i) => {
+    const b = document.createElement('button');
+    b.className = 'ti-dot';
+    b.style.cssText = `width:${i===tiIndex?'26px':'9px'};background:${i===tiIndex?'#cf7f54':'#d8c8ac'}`;
+    b.onclick = () => { tiIndex = i; renderTi(); };
+    b.setAttribute('aria-label','Testimonial '+(i+1));
+    dots.appendChild(b);
+  });
+}
+function nextTi(){ tiIndex=(tiIndex+1)%testimonials.length; renderTi(); }
+function prevTi(){ tiIndex=(tiIndex+testimonials.length-1)%testimonials.length; renderTi(); }
+renderTi();
+let tiTimer = setInterval(nextTi, 6000);
+
+// ── PAGE ROUTING ───────────────────────────────────────
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.desktop-nav button').forEach(b => b.classList.remove('active'));
+  const nb = document.getElementById('nav-'+id);
+  if(nb) nb.classList.add('active');
+  // Close mobile menu
+  document.getElementById('mobile-menu').classList.remove('open');
+  // Scroll to top
+  window.scrollTo({top:0,behavior:'instant'});
+  // Trigger fade-ins on new page
+  setTimeout(observeFadeIns, 80);
+}
+
+function scrollToSection(id){
+  showPage('home');
+  setTimeout(()=>{
+    const el = document.getElementById(id);
+    if(el){
+      const y = el.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({top:y, behavior:'smooth'});
+    }
+  }, 60);
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+// ── MOBILE MENU ────────────────────────────────────────
+function toggleMenu(){
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+// ── CONTACT FORM ───────────────────────────────────────
+function submitForm(){
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const msg = document.getElementById('f-msg').value.trim();
+  if(!name || !email || !msg){ alert('Please fill in all required fields.'); return; }
+  document.getElementById('form-open').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+function resetForm(){
+  ['f-name','f-phone','f-email','f-msg'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('form-open').style.display = 'block';
+  document.getElementById('form-success').style.display = 'none';
+}
+
+// ── SCROLL REVEAL ──────────────────────────────────────
+function observeFadeIns(){
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  },{threshold:0.12});
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el => obs.observe(el));
+}
+observeFadeIns();
+</script>
+</body>
+</html>
